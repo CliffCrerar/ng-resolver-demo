@@ -26,7 +26,6 @@ function getBaseUrl() {
 
 @NgModule({
   declarations: [
-
     AppComponent,
     // AppLandComponent,
     UsrProfileComponent,
@@ -35,7 +34,6 @@ function getBaseUrl() {
     BloggerComponent,
     UserPostsComponent,
     HomeComponent
-
   ],
   imports: [
     BrowserModule,
@@ -46,14 +44,12 @@ function getBaseUrl() {
     FormsModule,
     SlimLoadingBarModule.forRoot(),
     BrowserAnimationsModule,
-
-
     // MaterialModule,
   ],
   providers: [
     PostService,
     [{ provide: 'BASE_URL', useFactory: getBaseUrl() }],
-     //ScrollDatService,
+    //ScrollDatService,
     UserPostsResolve
   ],
   bootstrap: [AppComponent]
