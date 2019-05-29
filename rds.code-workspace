@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "C:\\GitHub\\ud_Angular7_the_Complete_Guide\\11_routing"
+    },
+    {
+      "path": "C:\\GitHub\\angular-http-demo"
+    }
+  ],
+  "settings": {
+    "git.ignoreLimitWarning": true
+  },
+  "angular-template-formatter.closeTagSameLine": true,
+}

@@ -1,31 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
+import { SlimLoadingBarService } from "ng2-slim-loading-bar";
+import {
+  NavigationStart,
+  NavigationEnd,
+  Event,
+  Router
+} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-    </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    <router-outlet></router-outlet>
+
+
+        <ng2-slim-loading-bar></ng2-slim-loading-bar>
+
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li routerLinkActive="active current"><a routerLink="/">Home</a></li>
+                <li routerLinkActive="active current"><a routerLink="/userposts">User Posts</a></li>
+                <li routerLinkActive="active current"><a routerLink="/bloggers">Bloggers</a></li>
+                <li routerLinkActive="active current"><a routerLink="/contact-us">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+			<router-outlet></router-outlet>
+
   `,
-  styles: []
+  styles: [``]
 })
 export class AppComponent {
-  title = 'resolver-demo-sandbox';
+  title = 'Resolver Demo Sandbox';
+  constructor(
+    private lBar: SlimLoadingBarService,
+    private _router: Router
+  ) {
+    this._router.events.subscribe((event: Event) => {
+      console.log(event);
+      this.loadingBarInterceptor(event);
+    });
+  }
+
+  private loadingBarInterceptor(event: Event) {
+    if (event instanceof NavigationStart) {
+      this.lBar.start();
+    }
+    if (event instanceof NavigationEnd) {
+      this.lBar.complete();
+    }
+  }
 }
