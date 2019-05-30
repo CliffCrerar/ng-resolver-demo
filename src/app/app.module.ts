@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar-observables';
 
 import { AppComponent } from 'app/app.component';
 // import { AppLandComponent } from 'app/land.component';
@@ -19,11 +19,11 @@ import { UserPostsComponent } from 'app/user-posts/user-posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 
-function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
+function getBaseUrl () {
+  return document.getElementsByTagName( 'base' )[ 0 ].href;
 }
 
-@NgModule({
+@NgModule( {
   declarations: [
     AppComponent,
     // AppLandComponent,
@@ -47,10 +47,10 @@ function getBaseUrl() {
   ],
   providers: [
     PostService,
-    [{ provide: 'BASE_URL', useFactory: getBaseUrl() }],
+    [ { provide: 'BASE_URL', useFactory: getBaseUrl() } ],
     // ScrollDatService,
     UserPostsResolve
   ],
-  bootstrap: [AppComponent]
-})
+  bootstrap: [ AppComponent ]
+} )
 export class AppModule { }

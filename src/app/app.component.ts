@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef } from '@angular/core';
-import { SlimLoadingBarService } from "ng2-slim-loading-bar";
+import { SlimLoadingBarService } from "ng2-slim-loading-bar-observables";
 import { NavigationStart, NavigationEnd, Event, Router } from "@angular/router";
 
 @Component({
