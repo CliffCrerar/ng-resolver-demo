@@ -19,7 +19,6 @@ import { UserPostsComponent } from 'app/user-posts/user-posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 
-
 function getBaseUrl() {
   return document.getElementsByTagName('base')[0].href;
 }
@@ -49,7 +48,7 @@ function getBaseUrl() {
   providers: [
     PostService,
     [{ provide: 'BASE_URL', useFactory: getBaseUrl() }],
-    //ScrollDatService,
+    // ScrollDatService,
     UserPostsResolve
   ],
   bootstrap: [AppComponent]

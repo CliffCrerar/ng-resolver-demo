@@ -9,6 +9,7 @@ import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UserPostsResolve } from './_service/user-post.resolve';
 import { BloggerComponent } from './blogger/blogger.component';
 import { AppComponent } from 'app/app.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   // {
@@ -16,9 +17,10 @@ const routes: Routes = [
   //   redirectTo: '/home',
   //   pathMatch: 'full'
   // },
+
   {
     path: '',
-    component: AppComponent,
+    component: HomeComponent,
     data: { title: 'Resolver Demo' }
   },
   {
